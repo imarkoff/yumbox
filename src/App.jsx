@@ -1,5 +1,5 @@
 import Header from "./header"
-import Item from "./item"
+import Item from "./item/item.jsx"
 import Slider from "./slider"
 
 import item_pic1 from "./assets/item_img.png"
@@ -42,18 +42,28 @@ let allProducts = [
     }
 ]
 
+const frequentOrders = "frequency_orders"
+
+
 function App() {
 
   return (
     <>
       <Header></Header>
       <Slider></Slider>
-      <h2 className="mid_title">Найчастіше замовляють</h2>
-      <div>
-        {allProducts.map((item, i)=>{
-          return <Item key={i} id={item.id} name={item.name} image={item.img} weight={item.weight} price={item.price}></Item>
+      <section className={frequentOrders}>
+          <h2 className={`${frequentOrders}__title`}>Найчастіше замовляють</h2>
+          {allProducts.map((item, i)=>{
+          return <Item
+              key={i}
+              id={item.id}
+              img={item.img}
+              name={item.name}
+              weight={item.weight}
+              price={item.price}>
+          </Item>
         })}
-      </div>
+      </section>
     </>
   );
 
