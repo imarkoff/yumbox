@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import DOMPurify from "dompurify";
 import { useState } from "react";
 
 export default function Button({btnClass, price }){
@@ -7,11 +8,11 @@ export default function Button({btnClass, price }){
 
     const handleClick = () =>{
         if (!added){
-            setButtonText("✅ В кошику 1 шт за " + price + " грн")
+            setButtonText(DOMPurify.sanitize("✅ В кошику <b>1</b> шт за <b>" + price + " грн</b>"))
             setAdded(true)
 
         } else {
-            setButtonText(" " + price + " грн");
+            setButtonText(price + " грн");
             setAdded(false);
         }
     }
@@ -34,8 +35,8 @@ export default function Button({btnClass, price }){
             onClick={handleClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            dangerouslySetInnerHTML={{__html: buttonText}} // юзається разом з DOMPurify.sanitize
         >
-            {buttonText}
         </button>
     );
 }

@@ -6,10 +6,6 @@
   justify-items: center;
   margin-top: 50px;
 
-  @media (min-width: 1060px) {
-    grid-template-columns: repeat(3 , 1fr);
-  }
-
   &__title {
     grid-column: 1 / -1; // розтягується на всю ширину
     margin: 50px 0;
@@ -50,10 +46,18 @@
       border-radius: 99px;
       border: 2px solid transparent;
 
-        &:hover,
-        &.added {
-          border-color: white;
-        }
+      &:hover,
+      &.added {
+        border-color: $button-border-color;
+      }
+
+      & b {
+        font-weight: 600;
+      }
     }
+  }
+
+  @media (min-width: 1092px) {
+    grid-template-columns: repeat(3 , 1fr);
   }
 }

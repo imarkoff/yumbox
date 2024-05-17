@@ -5,12 +5,10 @@
 
 body {
   background-color: black;
-  padding-left: 200px;
-  padding-right: 200px;
-  margin: 0px;
-  overflow: auto;
+  max-width: 1300px;
+  padding: 0 20px;
+  margin: 0 auto;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
 }
 
 header {
@@ -117,11 +115,6 @@ nav ul li {
   justify-items: center;
   margin-top: 50px;
 }
-@media (min-width: 1060px) {
-  .frequent-orders {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 .frequent-orders__title {
   grid-column: 1/-1;
   margin: 50px 0;
@@ -159,6 +152,14 @@ nav ul li {
 }
 .frequent-orders__item__button:hover, .frequent-orders__item__button.added {
   border-color: white;
+}
+.frequent-orders__item__button b {
+  font-weight: 600;
+}
+@media (min-width: 1092px) {
+  .frequent-orders {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 #check_icon {
