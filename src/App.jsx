@@ -42,7 +42,7 @@ let allProducts = [
     }
 ]
 
-const frequentOrders = "frequency_orders"
+const frequentOrders = "frequent-orders"
 
 
 function App() {
@@ -60,7 +60,9 @@ function App() {
               img={item.img}
               name={item.name}
               weight={item.weight}
-              price={item.price}>
+              price={item.price}
+              frequentOffers={frequentOrders}
+          >
           </Item>
         })}
       </section>

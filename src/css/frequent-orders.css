@@ -1,0 +1,53 @@
+.frequent-orders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 50px;
+}
+@media (min-width: 1060 px) {
+  .frequent-orders {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.frequent-orders__title {
+  grid-column: 1/-1;
+  margin: 50px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.frequent-orders__item {
+  text-align: center;
+  margin: 25px 15px;
+}
+.frequent-orders__item > * {
+  margin: 9px 0;
+}
+.frequent-orders__item__image {
+  max-width: 295px;
+}
+.frequent-orders__item__name {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.frequent-orders__item__weight {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 40%;
+}
+.frequent-orders__item__button {
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  padding: 25px 40px;
+  font-size: 16px;
+  border-radius: 99px;
+  border: 2px solid transparent;
+}
+.frequent-orders__item__button:hover, .frequent-orders__item__button.added {
+  border-color: white;
+}
+
+/*# sourceMappingURL=frequent-orders.css.map */

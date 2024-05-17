@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  color: white;
+}
+
+body {
+  background-color: black;
+  padding-left: 200px;
+  padding-right: 200px;
+  margin: 0px;
+  overflow: auto;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#logo_box {
+  width: 72.5px;
+  height: 72.5px;
+  border: 3px solid white;
+}
+
+#logo_name {
+  margin-left: 17px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  background-color: black;
+  font-size: 25px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+#logo_name_1 {
+  color: #FCB852;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  float: center;
+  position: relative;
+  width: 395px;
+  font-style: normal;
+  left: 50%;
+  transform: translate(-65%, 0%);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18.29px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  margin-left: 20px;
+  list-style-type: none;
+}
+
+#nav_li_1 {
+  margin-left: 0;
+}
+
+#user_purchases {
+  position: relative;
+  border: 1px solid white;
+  border-radius: 13px;
+  width: 117px;
+  height: 27px;
+  left: 60%;
+}
+#quantity {
+  position: relative;
+  background-color: red;
+  height: 22px;
+  width: 22px;
+  border-radius: 11px;
+  top: 2px;
+  left: 2px;
+  text-align: center;
+}
+#total {
+  position: relative;
+  top: -18px;
+  left: 15px;
+  text-align: center;
+}
+
+.mid_title{
+  text-align: center;
+}
+
+@import './frequent-orders';
+
+#check_icon{
+  opacity: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-10%, 0%);
+}

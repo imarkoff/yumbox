@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 import Button from './button.jsx'
 
-export default function Item({ i, img, name, weight, price }){
+export default function Item({ i, img, name, weight, price,
+                             frequentOffers}){
+
+    const item = `${frequentOffers}__item`
     return(
-        <article id="item">
-            <img src={img} alt="Item image" id="item_image"></img>
-            <h2 id="item_name">Yumbox <br/>{name}</h2>
-            <p id="item_weight">{weight} гр</p>
-            <Button id="item_button" price={price}></Button>
+        <article className={item}>
+            <img src={img} alt="Item image" className={`${item}__image`}></img>
+            <h2 className={`${item}__name`}>Yumbox <br/>{name}</h2>
+            <p className={`${item}__weight`}>{weight} гр</p>
+            <Button btnClass={`${item}__button`} price={price}></Button>
         </article>
     );
 }
@@ -17,6 +20,7 @@ Item.propTypes = {
     img: PropTypes.string,
     name: PropTypes.string,
     weight: PropTypes.number,
-    price: PropTypes.number
+    price: PropTypes.number,
+    frequentOffers: PropTypes.string,
 }
 

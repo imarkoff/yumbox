@@ -1,0 +1,59 @@
+.frequent-orders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 50px;
+
+  @media (min-width: 1060px) {
+    grid-template-columns: repeat(3 , 1fr);
+  }
+
+  &__title {
+    grid-column: 1 / -1; // розтягується на всю ширину
+    margin: 50px 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__item {
+    text-align: center;
+    margin: 25px 15px;
+
+    & > * {
+      margin: 9px 0;
+    }
+
+    &__image {
+      max-width: 295px;
+    }
+
+    &__name {
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+
+    &__weight {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 40%;
+    }
+
+    &__button {
+      background-color: transparent;
+      cursor: pointer;
+      width: 100%;
+      padding: 25px 40px;
+      font-size: 16px;
+      border-radius: 99px;
+      border: 2px solid transparent;
+
+        &:hover,
+        &.added {
+          border-color: white;
+        }
+    }
+  }
+}
