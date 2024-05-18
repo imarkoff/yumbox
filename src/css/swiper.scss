@@ -1,0 +1,87 @@
+// styles for swiper
+.swiper {
+  background-color: $section-bg;
+  background-image: url("../assets/yumbox_big.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  border-radius: 24px;
+  overflow: visible;
+
+  // content in slider
+  &-slide {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+
+    & > img {
+      position: absolute; // чучут костиль шоб фотка не розмивалася
+    }
+  }
+
+  &-box {
+    overflow: hidden;
+  }
+
+  // prev / next arrows
+  &-button {
+    &-prev,
+    &-next {
+      $arrow-size: 36px;
+      width: $arrow-size;
+      height: $arrow-size;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("../assets/arrow.svg");
+
+      @media (max-width: 960px) {
+        display: none;
+      }
+
+      &::after {
+        content: '';
+      }
+    }
+    &-next {
+      rotate: 180deg;
+    }
+  }
+
+  // controls below swiper
+  &-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+
+    // arrows
+    & .swiper-button {
+      &-prev,
+      &-next {
+          position: static;
+          margin: 0;
+          display: block;
+
+          @media (min-width: 960px) {
+            display: none;
+          }
+        }
+    }
+  }
+
+  // pagination bullets
+  &-pagination {
+    position: static;
+
+    &-bullet {
+      background-color: $body-font-color;
+      opacity: 40%;
+
+      &-active {
+        opacity: 100%;
+      }
+    }
+
+  }
+}

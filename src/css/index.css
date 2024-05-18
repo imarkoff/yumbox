@@ -5,10 +5,15 @@
 
 body {
   background-color: black;
-  max-width: 1300px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: 0 auto;
   font-family: "Montserrat", sans-serif;
+}
+@media (min-width: 960px) {
+  body {
+    padding: 0 80px;
+  }
 }
 
 header {
@@ -51,7 +56,6 @@ a {
 }
 
 nav {
-  float: center;
   position: relative;
   width: 395px;
   font-style: normal;
@@ -148,7 +152,9 @@ nav ul li {
   padding: 25px 40px;
   font-size: 16px;
   border-radius: 99px;
+  font-family: "Montserrat", sans-serif;
   border: 2px solid transparent;
+  transition-duration: 150ms;
 }
 .frequent-orders__item__button:hover, .frequent-orders__item__button.added {
   border-color: white;
@@ -156,17 +162,77 @@ nav ul li {
 .frequent-orders__item__button b {
   font-weight: 600;
 }
-@media (min-width: 1092px) {
-  .frequent-orders {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 #check_icon {
   opacity: 100;
   left: 50%;
   top: 50%;
   transform: translate(-10%, 0%);
+}
+
+.swiper {
+  background-color: #222;
+  background-image: url("../assets/yumbox_big.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  border-radius: 24px;
+  overflow: visible;
+}
+.swiper-slide {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.swiper-slide > img {
+  position: absolute;
+}
+.swiper-box {
+  overflow: hidden;
+}
+.swiper-button-prev, .swiper-button-next {
+  width: 36px;
+  height: 36px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../assets/arrow.svg");
+}
+@media (max-width: 960px) {
+  .swiper-button-prev, .swiper-button-next {
+    display: none;
+  }
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+  content: "";
+}
+.swiper-button-next {
+  rotate: 180deg;
+}
+.swiper-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.swiper-controls .swiper-button-prev, .swiper-controls .swiper-button-next {
+  position: static;
+  margin: 0;
+  display: block;
+}
+@media (min-width: 960px) {
+  .swiper-controls .swiper-button-prev, .swiper-controls .swiper-button-next {
+    display: none;
+  }
+}
+.swiper-pagination {
+  position: static;
+}
+.swiper-pagination-bullet {
+  background-color: white;
+  opacity: 40%;
+}
+.swiper-pagination-bullet-active {
+  opacity: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */

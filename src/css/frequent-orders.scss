@@ -44,7 +44,9 @@
       padding: 25px 40px;
       font-size: 16px;
       border-radius: 99px;
+      font-family: $font-stack;
       border: 2px solid transparent;
+      transition-duration: 150ms;
 
       &:hover,
       &.added {
@@ -55,9 +57,5 @@
         font-weight: 600;
       }
     }
-  }
-
-  @media (min-width: 1092px) {
-    grid-template-columns: repeat(3 , 1fr);
   }
 }

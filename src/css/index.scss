@@ -4,6 +4,7 @@ $font-stack: 'Montserrat', sans-serif;
 
 $body-color: black;
 $body-font-color: white;
+$section-bg: #222;
 
 $button-border-color: $body-font-color;
 
@@ -13,10 +14,14 @@ $button-border-color: $body-font-color;
 
 body {
   background-color: black;
-  max-width: 1300px;
+  max-width: 1440px;
   padding: 0 20px;
   margin: 0 auto;
   font-family: $font-stack;
+  
+  @media (min-width: 960px) {
+      padding: 0 80px;
+  }
 }
 
 header {
@@ -59,7 +64,6 @@ a {
 }
 
 nav {
-  float: center;
   position: relative;
   width: 395px;
   font-style: normal;
@@ -121,3 +125,5 @@ nav ul li {
   top: 50%;
   transform: translate(-10%, 0%);
 }
+
+@import './swiper';
