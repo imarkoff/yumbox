@@ -1,11 +1,13 @@
+// найчастіше замовляють
 .frequent-orders {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   flex-direction: row;
   justify-content: center;
   justify-items: center;
-  margin-top: 50px;
+  margin-top: 15px;
 
+    // заголовок
   &__title {
     grid-column: 1 / -1; // розтягується на всю ширину
     margin: 50px 0;
@@ -13,35 +15,42 @@
     font-weight: 500;
   }
 
+  // блок товару
   &__item {
     text-align: center;
     margin: 25px 15px;
 
+    // відступи між елементами
     & > * {
       margin: 9px 0;
     }
 
+    // картинка товару
     &__image {
       max-width: 295px;
     }
 
+    // назва
     &__name {
       font-size: 24px;
       line-height: 24px;
       font-weight: 600;
     }
 
+    // вага
     &__weight {
       font-size: 13px;
       font-weight: 500;
       opacity: 40%;
     }
 
+    // кнопка в товарі
     &__button {
       background-color: transparent;
       cursor: pointer;
       width: 100%;
-      padding: 25px 40px;
+      // padding: 25px 0;
+      height: 65px; // щоб не змінювалася ширина при наявності img
       font-size: 16px;
       border-radius: 99px;
       font-family: $font-stack;
@@ -53,6 +62,11 @@
         border-color: $button-border-color;
       }
 
+      // галочка в кнопці
+      & > img {
+        vertical-align: sub;
+        margin: 0 6px;
+      }
       & b {
         font-weight: 600;
       }

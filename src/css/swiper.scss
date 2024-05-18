@@ -1,28 +1,71 @@
 // styles for swiper
 .swiper {
-  background-color: $section-bg;
-  background-image: url("../assets/yumbox_big.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80%;
   border-radius: 24px;
-  overflow: visible;
 
   // content in slider
   &-slide {
     height: 500px;
     display: flex;
     justify-content: center;
-
+    user-select: none;
     overflow: hidden;
 
-    & > img {
+    // yumbox image
+    background-color: $section-bg;
+    background-image: url("../assets/yumbox_big.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    border-radius: 24px;
+
+    &__image {
       position: absolute; // чучут костиль шоб фотка не розмивалася
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-  }
 
-  &-box {
-    overflow: hidden;
+    // product name and price
+    &__description {
+      position: absolute; // теж костиль
+      color: $accent-color;
+      display: flex;
+      align-items: center;
+      height: fit-content;
+      margin-bottom: 50px;
+      bottom: 0;
+      text-transform: uppercase;
+
+        & > * {
+          margin: 0 7.5px;
+        }
+
+      &__name {
+        color: inherit;
+        font-size: 39px;
+        font-weight: 700;
+      }
+
+      &__price {
+        color: inherit;
+        font-size: 23px;
+        font-weight: 600;
+        border: 3.5px solid $accent-color;
+        border-radius: 99px;
+        padding: 5px 16px;
+      }
+    }
+
+    &__sticker {
+      position: absolute;
+      top: 0;
+      left: 10%;
+      padding: 5px 10px;
+      border-radius: 0 0 0 24px;
+      font-size: 20px;
+      font-weight: 600;
+    }
   }
 
   // prev / next arrows
@@ -35,11 +78,9 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-image: url("../assets/arrow.svg");
+      transition-duration: 200ms;
 
-      @media (max-width: 960px) {
-        display: none;
-      }
-
+      // прибрати дефолтні стрілки
       &::after {
         content: '';
       }
@@ -59,14 +100,15 @@
     & .swiper-button {
       &-prev,
       &-next {
-          position: static;
-          margin: 0;
-          display: block;
+        position: static;
+        margin: 0;
+        display: block;
+        width: 100%;
 
-          @media (min-width: 960px) {
-            display: none;
-          }
+        @media (min-width: 961px) {
+          display: none;
         }
+      }
     }
   }
 
@@ -82,6 +124,56 @@
         opacity: 100%;
       }
     }
+  }
+}
 
+@media (max-width: 960px) {
+  .swiper {
+
+    &-slide {
+      height: 315px;
+
+      background-image: url("../assets/yumbox_small.svg");
+      background-size: auto 70%;
+      $bg-position: 20%;
+      background-position: center $bg-position;
+
+      &__image {
+        height: 65%;
+        top: $bg-position/2;
+      }
+
+      &__description {
+        margin-bottom: 25px;
+
+        &__name {
+          font-size: 33px;
+          font-weight: 600;
+        }
+
+        &__price {
+          font-size: 20px;
+          padding: 4px 12px;
+        }
+      }
+
+      &__sticker {
+        display: none;
+      }
+    }
+
+    &-button {
+      &-prev,
+      &-next {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 961px) {
+  .swiper {
+    &-slide {
+    }
   }
 }

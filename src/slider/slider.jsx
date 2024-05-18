@@ -5,11 +5,34 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import sliderImg from './assets/img_slider.png'
+import sliderImg from '../assets/img_slider.png'
+import Slide from "./slide.jsx";
+
+const sliderProducts = [
+    {
+        id: 1,
+        name: "сет 21",
+        img: sliderImg,
+        price: 934,
+    },
+    {
+        id: 2,
+        name: "сет 22",
+        img: sliderImg,
+        price: 934,
+    },
+    {
+        id: 3,
+        name: "сет 23",
+        img: sliderImg,
+        price: 934,
+    },
+]
 
 export default function Slider(){
     const swiperRef = useRef(null);
 
+    // ще один костиль, для продублюваних кнопок знизу слайдера
     const onNext = () => {
         swiperRef.current.swiper.slideNext();
     }
@@ -32,21 +55,15 @@ export default function Slider(){
                 navigation={{
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
-                    clickable: true,
                 }}
-                scrollbar={{ draggable: true }}
             >
-                <SwiperSlide>
-                    <img src={sliderImg} alt='slider image'></img>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={sliderImg} alt='slider image'></img>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={sliderImg} alt='slider image'></img>
-                </SwiperSlide>
-                <div className="swiper-button-next"></div>
+                {sliderProducts.map(product => {
+                    return <SwiperSlide key={product.id}>
+                        <Slide id={product.id} name={product.name} img={product.img} price={product.price}/>
+                    </SwiperSlide>
+                })}
                 <div className="swiper-button-prev"></div>
+                <div className="swiper-button-next"></div>
             </Swiper>
             <div className="swiper-controls">
                 <div className="swiper-button-prev" onClick={onPrev}></div>

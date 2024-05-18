@@ -2,13 +2,19 @@ import PropTypes from "prop-types";
 import DOMPurify from "dompurify";
 import { useState } from "react";
 
+import check_circle from '../assets/check-circle.svg';
+
 export default function Button({btnClass, price }){
     const [buttonText, setButtonText] = useState(price + " грн");
     const [added, setAdded] = useState(false);
 
     const handleClick = () =>{
         if (!added){
-            setButtonText(DOMPurify.sanitize("✅ В кошику <b>1</b> шт за <b>" + price + " грн</b>"))
+            setButtonText(
+                DOMPurify.sanitize(
+                    `<img src='${check_circle}' alt=''>` +
+                    "В кошику <b>1</b> шт за <b>" + price + " грн</b>"
+                ))
             setAdded(true)
 
         } else {
