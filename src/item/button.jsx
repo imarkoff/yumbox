@@ -13,7 +13,7 @@ export default function Button({btnClass, price }){
             setButtonText(
                 DOMPurify.sanitize(
                     `<img src='${check_circle}' alt=''>` +
-                    "В кошику <b>1</b> шт за <b>" + price + " грн</b>"
+                    "В кошику <b>1 шт</b> за <b>" + price + " грн</b>"
                 ))
             setAdded(true)
 
