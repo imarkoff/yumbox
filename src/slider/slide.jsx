@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import sticker from '../assets/sticker.svg'
+import sticker from '../assets/slider/sticker.svg'
 
 export default function Slide({ id, name, img, price }) {
     const sliderDiv = 'swiper-slide'

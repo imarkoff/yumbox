@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import check_circle from '../assets/check-circle.svg';
 
-export default function Button({btnClass, price }){
+export default function Button({ btnClass, price }){
     const [buttonText, setButtonText] = useState(price + " грн");
     const [added, setAdded] = useState(false);
 

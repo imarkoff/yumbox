@@ -1,4 +1,4 @@
-import Header from "./header"
+import Header from "./header/header.jsx"
 import Item from "./item/item.jsx"
 import Slider from "./slider/slider.jsx"
 

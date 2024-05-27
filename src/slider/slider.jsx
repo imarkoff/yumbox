@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import sliderImg from '../assets/img_slider.png'
+import sliderImg from '../assets/slider/img_slider.png'
 import Slide from "./slide.jsx";
 
 const sliderProducts = [

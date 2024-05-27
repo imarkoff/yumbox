@@ -54,12 +54,21 @@
       font-size: 16px;
       border-radius: 99px;
       font-family: $font-stack;
+      font-weight: 600;
       border: 2px solid transparent;
       transition-duration: 150ms;
 
       &:hover,
       &.added {
         border-color: $button-border-color;
+      }
+
+      &:hover:not(.added) {
+        font-weight: 500;
+      }
+
+      &.added {
+        font-weight: 400;
       }
 
       // галочка в кнопці
@@ -70,6 +79,15 @@
       & b {
         font-weight: 600;
       }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .frequent-orders {
+    &__title {
+      margin-top: 40px;
+      margin-bottom: 30px;
     }
   }
 }
