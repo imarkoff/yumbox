@@ -1,0 +1,40 @@
+.cart{
+    position: fixed;
+    z-index: 1000;
+    padding: 30px;
+    width: 470px;
+    height: 100%;
+    margin: 0;
+    background-color: $body-color;
+
+    opacity: 0;
+    //pointer-events: none;
+    transition-duration: 300ms;
+    
+    &.opened {
+        display: block;
+        opacity: 1;
+        //pointer-events: visible;
+    }
+}
+.cart-item{
+    width: 150px;
+    margin-top: 10px;
+    background-color: grey;
+    border-radius: 10px;
+    &:first-child{
+        margin-top: 0;
+    }
+    hr{
+        color: black;
+        width: max-content;
+    }
+}
+
+@media (max-width: 961px) {
+    .cart {
+      &.opened {
+        display: none;
+      }
+    }
+}

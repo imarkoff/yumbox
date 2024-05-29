@@ -42,7 +42,7 @@ export default function Header(){
     const menuDivClass = 'menu-div'
     const menuButtonClass = 'menu-button'
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    var [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return(
         <>

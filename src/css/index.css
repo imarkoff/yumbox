@@ -288,7 +288,9 @@ a {
   height: 500px;
   display: flex;
   justify-content: center;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   overflow: hidden;
   background-color: #222;
   background-image: url("../assets/slider/yumbox_big.svg");
@@ -302,13 +304,15 @@ a {
   z-index: -1;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .swiper-slide__description {
   position: absolute;
   color: #FCB852;
   display: flex;
   align-items: center;
+  height: -moz-fit-content;
   height: fit-content;
   margin-bottom: 50px;
   bottom: 0;
@@ -408,6 +412,4 @@ a {
   .swiper-button-prev, .swiper-button-next {
     display: none;
   }
-}
-
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
