@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Button from './button.jsx'
 
-export default function Item({ i, id, img, name, weight, price,
+export default function Item({ id, img, name, weight, price,
                              frequentOffers}){
 
     const item = `${frequentOffers}__item`
@@ -16,7 +16,7 @@ export default function Item({ i, id, img, name, weight, price,
 }
 
 Item.propTypes = {
-    i: PropTypes.number,
+    id: PropTypes.number,
     img: PropTypes.string,
     name: PropTypes.string,
     weight: PropTypes.number,

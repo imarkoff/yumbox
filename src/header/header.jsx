@@ -3,6 +3,7 @@ import { useState } from 'react';
 import logo from '../assets/logo.svg'
 import Menu from "./menu.jsx";
 import PurchasesButton from "./purchases-button.jsx";
+import Cart from "../cart/cart.jsx";
 
 const links = [
     {
@@ -89,6 +90,8 @@ export default function Header(){
                 links={links}
                 opened={isMenuOpen}
             ></Menu>
+
+            <Cart></Cart>
         </>
     );
 

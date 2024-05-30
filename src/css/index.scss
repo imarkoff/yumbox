@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-$font-stack: 'Montserrat', sans-serif;
-
-$body-color: black;
-$body-font-color: white;
-$section-bg: #222;
-$accent-color: #FCB852;
-
-$button-border-color: $body-font-color;
+@import './variables';
 
 * {
   color: $body-font-color;

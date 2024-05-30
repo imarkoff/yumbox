@@ -1,3 +1,5 @@
+@import '../variables';
+
 .cart{
     position: fixed;
     z-index: 1000;
@@ -6,15 +8,14 @@
     height: 100%;
     margin: 0;
     background-color: $body-color;
-
+    pointer-events: none;
     opacity: 0;
-    //pointer-events: none;
     transition-duration: 300ms;
     
     &.opened {
-        display: block;
+        //display: block;
         opacity: 1;
-        //pointer-events: visible;
+        pointer-events: visible;
     }
 }
 .cart-item{
@@ -29,12 +30,17 @@
         color: black;
         width: max-content;
     }
-}
 
-@media (max-width: 961px) {
-    .cart {
-      &.opened {
-        display: none;
-      }
+    &__img {
+        width: 50px;
+        border-radius: 5px;
     }
 }
+
+//@media (max-width: 961px) {
+//    .cart {
+//      &.opened {
+//        display: none;
+//      }
+//    }
+//}

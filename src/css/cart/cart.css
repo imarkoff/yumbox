@@ -6,12 +6,11 @@
   height: 100%;
   margin: 0;
   background-color: black;
-  opacity: 0;
   pointer-events: none;
+  opacity: 0;
   transition-duration: 300ms;
 }
 .cart.opened {
-  display: block;
   opacity: 1;
   pointer-events: visible;
 }
@@ -27,12 +26,11 @@
 }
 .cart-item hr {
   color: black;
-  width: -moz-max-content;
   width: max-content;
 }
+.cart-item__img {
+  width: 50px;
+  border-radius: 5px;
+}
 
-@media (max-width: 961px) {
-  .menu.opened {
-    display: none;
-  }
-}/*# sourceMappingURL=cart.css.map */
+/*# sourceMappingURL=cart.css.map */
