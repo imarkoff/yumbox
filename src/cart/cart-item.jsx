@@ -8,7 +8,7 @@ import minus from "../assets/cart/minus.svg"
 import plus from "../assets/cart/plus.svg"
 import PropTypes from "prop-types";
 
-export default function CartItem( { quantity, product } ){
+export default function CartItem({ quantity, product }) {
     const { id, name, img, weight, price } = product;
     const { increaseQuantity, decreaseQuantity, removeFromCart } = useContext(ShopContext);
 
@@ -23,23 +23,24 @@ export default function CartItem( { quantity, product } ){
     return (
         <>
             <div className={cartItemClass}>
-                <div className="section1">
+                <div className="section0">
                     <img src={img} alt="Product img" className={cartItemImage}></img>
-                </div>
-                <div className="section2">
-                    <div className={cartItemName}>{name}</div>
-                    <div className={cartItemWeight}>{weight}</div>
-                    <button onClick={() => {removeFromCart(id)}}>
+                    <div className="section2">
+                        <div className={cartItemName}>{name}</div>
+                        <div className={cartItemWeight}>{weight} гр</div>
+                    </div>
+                    <button onClick={() => { removeFromCart(id) }}>
                         <img src={bin} className={cartItemBin} alt="remove"></img>
                     </button>
                 </div>
+
                 <hr></hr>
                 <div className="section3">
                     <h1 className={cartItemPrice}>{price * quantity} ₴</h1>
-                    <div>
-                        <button onClick={() => {decreaseQuantity(id)}}><img src={minus} alt="decrease"></img></button>
-                        <span className={cartItemQuantity}>{}</span>
-                        <button onClick={() => {increaseQuantity(id)}}><img src={plus} alt="increase"></img></button>
+                    <div className="section4">
+                        <button onClick={() => { decreaseQuantity(id) }}><img src={minus} alt="decrease"></img></button>
+                        <span className={cartItemQuantity}>{quantity}</span>
+                        <button onClick={() => { increaseQuantity(id) }}><img src={plus} alt="increase"></img></button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useEffect} from "react";
 import {allProducts} from "../products"
 import PropTypes from "prop-types";
 
@@ -74,6 +74,45 @@ export default function ShopContextProvider(props){
     const [cartItems] = useState(new CarItems());
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [cartChange, setCartChange] = useState(0);
+    
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalQuantity, setTotalQuantity] = useState(0);
+    const delivery = 50;
+
+    useEffect(() => {
+        let cartItems = getCartItems();
+        let tempTotalPrice = 0;
+
+        // підрахунок загальної ціни
+        cartItems.forEach((item) => {
+            const product = allProducts.find(product => product.id === item.id);
+            tempTotalPrice += product.price * item.quantity;
+        });
+
+        // додаткова знижка
+        if (tempTotalPrice > 1000) {
+            tempTotalPrice = tempTotalPrice * 0.9
+        }
+
+        // сума доставки
+        tempTotalPrice += delivery;
+
+        // заокруглення до 0 знаків після коми
+        tempTotalPrice = tempTotalPrice.toFixed(0)
+
+        setTotalPrice(tempTotalPrice)
+    }, [cartItems, cartChange]);
+
+    useEffect(()=>{
+        let cartItems = getCartItems();
+        let Quantity = 0;
+
+        cartItems.forEach((item) => {
+            Quantity += item.quantity;
+        });
+
+        setTotalQuantity(Quantity);
+    }, [cartItems, cartChange])
 
     // для зміни стану cartChange (оновлення кошика)
     const handleCartChange = () => {
@@ -82,25 +121,25 @@ export default function ShopContextProvider(props){
 
     const addToCart = (itemId) => {
         cartItems.add(itemId);
-        console.log(cartItems.getAll())
+        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
     const removeFromCart = (itemId) =>{
         cartItems.remove(itemId);
-        console.log(cartItems.getAll())
+        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
     const increaseQuantity = (itemId) =>{
         cartItems.increase(itemId);
-        console.log(cartItems.getAll())
+        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
     const decreaseQuantity = (itemId) =>{
         cartItems.decrease(itemId);
-        console.log(cartItems.getAll())
+        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
@@ -126,7 +165,10 @@ export default function ShopContextProvider(props){
         getCartItems,
         reverseVisibility,
         cartChange,
-        isCartOpen
+        isCartOpen,
+        totalPrice,
+        totalQuantity,
+        delivery
     }
 
     return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>

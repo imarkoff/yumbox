@@ -10,7 +10,6 @@ function App() {
 
   return (
     <>
-    {/* Тут тільки обгорнув у ShopContextProvider щоб робило*/}
     <ShopContextProvider>
       <Header></Header>
       <Slider></Slider>

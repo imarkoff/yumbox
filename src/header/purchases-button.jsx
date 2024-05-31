@@ -3,9 +3,7 @@ import { ShopContext } from "../context/context"
 
 export default function PurchasesButton() {
     const purchasesClass = 'purchases'
-    const { reverseVisibility} = useContext(ShopContext)
-
-    // TODO вивести кількість товарів та загальну ціну в кошику. бажано це витягувати з контексту
+    const { reverseVisibility, totalQuantity, totalPrice, delivery} = useContext(ShopContext)
 
     return (
         <>
@@ -13,8 +11,8 @@ export default function PurchasesButton() {
             className={`${purchasesClass}`}
             onClick={() => {reverseVisibility()}}
         >
-            <span className={`${purchasesClass}__quantity`}>0</span>
-            <span className={`${purchasesClass}__price`}>0 грн</span>
+            <span className={`${purchasesClass}__quantity`}>{totalQuantity}</span>
+            <span className={`${purchasesClass}__price`}>{totalQuantity != 0 ? totalPrice : totalPrice - delivery} грн</span>
         </button>
         </>
     )

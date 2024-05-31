@@ -1,40 +1,111 @@
 @import '../variables';
 
-.cart{
-    position: fixed;
+.cart {
+    position: absolute;
+    inset-inline-end: 0;
     z-index: 1000;
     padding: 30px;
     width: 470px;
     height: 100%;
-    margin: 0;
     background-color: $body-color;
     pointer-events: none;
     opacity: 0;
     transition-duration: 300ms;
-    
+
     &.opened {
         //display: block;
         opacity: 1;
         pointer-events: visible;
+        
+    }
+
+    &__img {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button {
+        background: none;
+        border: 0;
     }
 }
-.cart-item{
-    width: 150px;
+
+.cart-item {
+    width: auto;
     margin-top: 10px;
-    background-color: grey;
-    border-radius: 10px;
-    &:first-child{
+    background-color: #222222;
+    border-radius: 15px;
+    padding: 18px;
+
+    &:first-child {
         margin-top: 0;
     }
-    hr{
-        color: black;
-        width: max-content;
+
+    &__name {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 18px;
+        text-align: left;
+    }
+
+    &__weight {
+        filter: opacity(40%);
+        font-size: 13px;
+        font-weight: 450;
+        line-height: 13px;
+        text-align: left;
+    }
+
+    hr {
+        border: 1px solid black;
+        background-color: black;
+        width: 100%;
+        z-index: auto;
+        height: 0px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     &__img {
         width: 50px;
+        border: 10px solid #303030;
         border-radius: 5px;
     }
+
+    button {
+        background: none;
+        border: 0;
+    }
+
+    .section0,
+    .section3 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__price {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 26px;
+    }
+
+    .section4{
+        display: flex;
+        justify-content: space-between;
+        width: 100px;
+        height: 33px;
+        border: 2px solid white;
+        border-radius: 23px;
+        span, button{
+            margin: auto;
+        }
+    }
+}
+
+.container1{
+    width: 100px;
+    height: 470px;
+    background-color: #222222;
 }
 
 //@media (max-width: 961px) {
