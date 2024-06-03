@@ -49,6 +49,13 @@
     &__delivery-inner{
         display: flex;
         justify-content: space-between;
+         margin-bottom: 25px;
+    }
+
+    &__heading {
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0;
     }
 
     button {

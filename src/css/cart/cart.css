@@ -41,6 +41,12 @@
 .cart__delivery-inner {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 25px;
+}
+.cart__heading {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
 }
 .cart button {
   background: none;
