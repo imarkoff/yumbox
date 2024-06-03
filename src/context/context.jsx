@@ -147,6 +147,10 @@ export default function ShopContextProvider(props){
         setIsCartOpen(!isCartOpen)
     }
 
+    const closeCart = () =>{
+        setIsCartOpen(false)
+    }
+
     const getCartItem = (itemId) =>{
         return cartItems.get(itemId)
     }
@@ -164,6 +168,7 @@ export default function ShopContextProvider(props){
         getCartItem,
         getCartItems,
         reverseVisibility,
+        closeCart,
         cartChange,
         isCartOpen,
         totalPrice,
