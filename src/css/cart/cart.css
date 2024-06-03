@@ -121,6 +121,24 @@
   align-items: center;
 }
 
+.blur {
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(252, 184, 82, 0.11);
+  z-index: 1000;
+  pointer-events: none;
+  transition-duration: 200ms;
+}
+.blur.opened {
+  opacity: 1;
+  pointer-events: initial;
+}
+
 @media (max-width: 960px) {
   .cart {
     left: 0;
