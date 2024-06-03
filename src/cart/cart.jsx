@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { allProducts } from "../products"
 import { ShopContext } from "../context/context"
 import CartItem from "./cart-item"
@@ -55,16 +55,21 @@ export default function Cart() {
 
     return (
         <>
+            <div
+                className={`blur ${isCartOpen ? "opened" : " "}`}
+            ></div>
             <div className={`${cartClass}  ${isCartOpen ? 'opened' : ''}`} ref={ref}>
                 <div className={cartImage}>
                     <h1 className={headingClass}>Корзина</h1>
                     <button
-                        onClick={() => { reverseVisibility() }}
+                        onClick={() => {
+                            reverseVisibility()
+                        }}
                     >
                         <img src={cross} alt=""></img>
                     </button>
                 </div>
-                <div>
+                <div className={`${cartClass}__items`}>
                     {cartItems.map((product, i) => {
                         const item = allProducts.find(item => item.id === product.id)
 

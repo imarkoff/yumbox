@@ -12,22 +12,24 @@ function App() {
     <>
     <ShopContextProvider>
       <Header></Header>
+      <main>
       <Slider></Slider>
-      <section className={frequentOrders}>
+        <section className={frequentOrders}>
           <h2 className={`${frequentOrders}__title`}>Найчастіше замовляють</h2>
           {allProducts.map((item, i)=>{
-          return <Item
-              key={i}
-              id={item.id}
-              img={item.img}
-              name={item.name}
-              weight={item.weight}
-              price={item.price}
-              frequentOffers={frequentOrders}
-          >
-          </Item>
-        })}
-      </section>
+            return <Item
+                key={i}
+                id={item.id}
+                img={item.img}
+                name={item.name}
+                weight={item.weight}
+                price={item.price}
+                frequentOffers={frequentOrders}
+            >
+            </Item>
+          })}
+        </section>
+      </main>
     </ShopContextProvider>
     </>
   );
