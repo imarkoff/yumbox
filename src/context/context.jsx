@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import {createContext, useState, useEffect, useCallback} from "react";
 import { allProducts } from "../products"
 import PropTypes from "prop-types";
 
@@ -79,41 +79,6 @@ export default function ShopContextProvider(props) {
     const [totalQuantity, setTotalQuantity] = useState(0);
     const delivery = 50;
 
-    useEffect(() => {
-        let cartItems = getCartItems();
-        let tempTotalPrice = 0;
-
-        // підрахунок загальної ціни
-        cartItems.forEach((item) => {
-            const product = allProducts.find(product => product.id === item.id);
-            tempTotalPrice += product.price * item.quantity;
-        });
-
-        // додаткова знижка
-        if (tempTotalPrice > 1000) {
-            tempTotalPrice = tempTotalPrice * 0.9
-        }
-
-        // сума доставки
-        tempTotalPrice += delivery;
-
-        // заокруглення до 0 знаків після коми
-        tempTotalPrice = tempTotalPrice.toFixed(0)
-
-        setTotalPrice(tempTotalPrice)
-    }, [cartItems, cartChange]);
-
-    useEffect(() => {
-        let cartItems = getCartItems();
-        let Quantity = 0;
-
-        cartItems.forEach((item) => {
-            Quantity += item.quantity;
-        });
-
-        setTotalQuantity(Quantity);
-    }, [cartItems, cartChange])
-
     // для зміни стану cartChange (оновлення кошика)
     const handleCartChange = () => {
         setCartChange(prevState => prevState + 1);
@@ -151,9 +116,46 @@ export default function ShopContextProvider(props) {
         return cartItems.get(itemId)
     }
 
-    const getCartItems = () => {
+    const getCartItems = useCallback(() => {
         return cartItems.getAll()
-    }
+    }, [cartItems])
+
+    // підрахунок загальної кількості товарів
+    useEffect(() => {
+        let cartItems = getCartItems();
+        let Quantity = 0;
+
+        cartItems.forEach((item) => {
+            Quantity += item.quantity;
+        });
+
+        setTotalQuantity(Quantity);
+    }, [cartItems, cartChange, getCartItems])
+
+    // підрахунок загальної ціни
+    useEffect(() => {
+        let cartItems = getCartItems();
+        let tempTotalPrice = 0;
+
+        // підрахунок загальної ціни
+        cartItems.forEach((item) => {
+            const product = allProducts.find(product => product.id === item.id);
+            tempTotalPrice += product.price * item.quantity;
+        });
+
+        // додаткова знижка
+        if (tempTotalPrice > 1000) {
+            tempTotalPrice = tempTotalPrice * 0.9
+        }
+
+        // сума доставки
+        tempTotalPrice += delivery;
+
+        // заокруглення до 0 знаків після коми
+        tempTotalPrice = tempTotalPrice.toFixed(0)
+
+        setTotalPrice(tempTotalPrice)
+    }, [cartChange, getCartItems]);
 
     const contextValue = {
         cartItems,
