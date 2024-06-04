@@ -155,20 +155,6 @@ export default function ShopContextProvider(props) {
         return cartItems.getAll()
     }
 
-    const getConsoleOrder = () => {
-        var i = 1;
-        let cartItems = getCartItems();
-        console.log("Замовлення: ")
-        cartItems.map((product) => {
-            var item = allProducts.find(item => item.id === product.id)
-
-            console.log(`${i}) ${item.name} - ${product.quantity}шт * ${item.price}грн`)
-            i++;
-        })
-        console.log("------------------------")
-        console.log(`Сума: ${totalPrice}грн`)
-    }
-
     const contextValue = {
         cartItems,
         addToCart,
@@ -177,7 +163,6 @@ export default function ShopContextProvider(props) {
         decreaseQuantity,
         getCartItem,
         getCartItems,
-        getConsoleOrder,
         reverseVisibility,
         closeCart,
         cartChange,

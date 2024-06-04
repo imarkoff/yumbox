@@ -6,7 +6,7 @@ import cross from "../assets/cart/cross.svg"
 import "../css/cart/cart.css"
 
 export default function Cart() {
-    const { getConsoleOrder, getCartItems, isCartOpen, reverseVisibility, closeCart, totalPrice, delivery } = useContext(ShopContext)
+    const { getCartItems, isCartOpen, reverseVisibility, closeCart, totalPrice, delivery } = useContext(ShopContext)
 
     const cartClass = 'cart'
     const cartImage = `${cartClass}__img`
@@ -16,6 +16,7 @@ export default function Cart() {
 
     const ref = useRef(null);
 
+    // close cart when click outside
     useEffect(() => {
       const handleClickOutside = (e) => {
         if (!ref?.current?.contains(e.target)) {
@@ -24,6 +25,11 @@ export default function Cart() {
       };
       document.addEventListener("mousedown", handleClickOutside);
     });
+
+    // output cart items in console
+    const getConsoleOrder = () => {
+        console.log(getCartItems());
+    }
 
     const myStyle1 = {
         backgroundColor: "#222222",
@@ -81,7 +87,12 @@ export default function Cart() {
                         <h3>Доставка</h3>
                         <h2>{delivery} ₴</h2>
                     </div>
-                    <button style={myStyle3} onClick={getConsoleOrder()}>Оформити за {totalPrice} ₴</button>
+                    <button
+                        style={myStyle3}
+                        onClick={() => getConsoleOrder()}
+                    >
+                        Оформити за {totalPrice} ₴
+                    </button>
                 </div>
             </div>
         </>
