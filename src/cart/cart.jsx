@@ -28,7 +28,18 @@ export default function Cart() {
 
     // output cart items in console
     const getConsoleOrder = () => {
-        console.log(getCartItems());
+        let order = getCartItems()
+        let i = 1
+
+        console.clear()
+        console.log("Замовлення: ")
+        order.map((product) => {
+            const item = allProducts.find(item => item.id === product.id)
+
+            console.log(`${i}) ${item.name} | ${product.quantity}шт * ${item.price}грн | ${product.quantity * item.price}грн`)
+            i++
+        })
+        console.log(`Сума: ${totalPrice}грн`)
     }
 
     const myStyle1 = {
