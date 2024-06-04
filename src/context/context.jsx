@@ -1,5 +1,5 @@
-import {createContext, useState, useEffect} from "react";
-import {allProducts} from "../products"
+import { createContext, useState, useEffect } from "react";
+import { allProducts } from "../products"
 import PropTypes from "prop-types";
 
 export const ShopContext = createContext(null);
@@ -7,13 +7,13 @@ export const ShopContext = createContext(null);
 //Цей файл для того щоб могти глобально знати які ітеми в корзині
 
 // Клас для товарів в корзині
-class CarItems {
-    constructor(){
+class CartItems {
+    constructor() {
         this.items = []
     }
 
     // додає товар в корзину
-    add(itemId){
+    add(itemId) {
         this.items.push({
             id: itemId,
             quantity: 1
@@ -21,30 +21,30 @@ class CarItems {
     }
 
     // видаляє товар з корзини
-    remove(itemId){
+    remove(itemId) {
         this.items = this.items.filter(item => item.id !== itemId)
     }
 
     // перевіряє чи є товар в корзині
-    checkIfItemExists(itemId){
+    checkIfItemExists(itemId) {
         return this.items.some(item => item.id === itemId)
     }
 
     // повертає товар по id
-    get(itemId){
+    get(itemId) {
         return this.items.find(item => item.id === itemId)
     }
 
     // повертає всі товари в корзині
-    getAll(){
+    getAll() {
         return this.items
     }
 
     // збільшує кількість товару в корзині
-    increase(itemId){
-        if (this.checkIfItemExists(itemId)){
+    increase(itemId) {
+        if (this.checkIfItemExists(itemId)) {
             this.items.forEach(item => {
-                if (item.id === itemId){
+                if (item.id === itemId) {
                     item.quantity += 1;
                 }
             })
@@ -52,17 +52,17 @@ class CarItems {
     }
 
     // зменшує кількість товару в корзині. Якщо кількість товару стане 0, то видаляємо товар з корзини
-    decrease(itemId){
-        if (this.checkIfItemExists(itemId)){
+    decrease(itemId) {
+        if (this.checkIfItemExists(itemId)) {
             const item = this.get(itemId);
 
-            if (item.quantity === 1){
+            if (item.quantity === 1) {
                 this.remove(itemId);
                 return;
             }
 
             this.items.forEach(item => {
-                if (item.id === itemId){
+                if (item.id === itemId) {
                     item.quantity -= 1;
                 }
             })
@@ -70,11 +70,11 @@ class CarItems {
     }
 }
 
-export default function ShopContextProvider(props){
-    const [cartItems] = useState(new CarItems());
+export default function ShopContextProvider(props) {
+    const [cartItems] = useState(new CartItems());
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [cartChange, setCartChange] = useState(0);
-    
+
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const delivery = 50;
@@ -103,7 +103,7 @@ export default function ShopContextProvider(props){
         setTotalPrice(tempTotalPrice)
     }, [cartItems, cartChange]);
 
-    useEffect(()=>{
+    useEffect(() => {
         let cartItems = getCartItems();
         let Quantity = 0;
 
@@ -121,42 +121,52 @@ export default function ShopContextProvider(props){
 
     const addToCart = (itemId) => {
         cartItems.add(itemId);
-        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
-    const removeFromCart = (itemId) =>{
+    const removeFromCart = (itemId) => {
         cartItems.remove(itemId);
-        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
-    const increaseQuantity = (itemId) =>{
+    const increaseQuantity = (itemId) => {
         cartItems.increase(itemId);
-        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
-    const decreaseQuantity = (itemId) =>{
+    const decreaseQuantity = (itemId) => {
         cartItems.decrease(itemId);
-        //console.log(cartItems.getAll())
         handleCartChange()
     }
 
-    const reverseVisibility = () =>{
+    const reverseVisibility = () => {
         setIsCartOpen(!isCartOpen)
     }
 
-    const closeCart = () =>{
+    const closeCart = () => {
         setIsCartOpen(false)
     }
 
-    const getCartItem = (itemId) =>{
+    const getCartItem = (itemId) => {
         return cartItems.get(itemId)
     }
 
-    const getCartItems = () =>{
+    const getCartItems = () => {
         return cartItems.getAll()
+    }
+
+    const getConsoleOrder = () => {
+        var i = 1;
+        let cartItems = getCartItems();
+        console.log("Замовлення: ")
+        cartItems.map((product) => {
+            var item = allProducts.find(item => item.id === product.id)
+
+            console.log(`${i}) ${item.name} - ${product.quantity}шт * ${item.price}грн`)
+            i++;
+        })
+        console.log("------------------------")
+        console.log(`Сума: ${totalPrice}грн`)
     }
 
     const contextValue = {
@@ -167,6 +177,7 @@ export default function ShopContextProvider(props){
         decreaseQuantity,
         getCartItem,
         getCartItems,
+        getConsoleOrder,
         reverseVisibility,
         closeCart,
         cartChange,

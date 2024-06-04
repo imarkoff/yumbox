@@ -6,7 +6,7 @@ import cross from "../assets/cart/cross.svg"
 import "../css/cart/cart.css"
 
 export default function Cart() {
-    const { getCartItems, isCartOpen, reverseVisibility, closeCart, totalPrice, delivery } = useContext(ShopContext)
+    const { getConsoleOrder, getCartItems, isCartOpen, reverseVisibility, closeCart, totalPrice, delivery } = useContext(ShopContext)
 
     const cartClass = 'cart'
     const cartImage = `${cartClass}__img`
@@ -81,7 +81,7 @@ export default function Cart() {
                         <h3>Доставка</h3>
                         <h2>{delivery} ₴</h2>
                     </div>
-                    <button style={myStyle3}>Оформити за {totalPrice} ₴</button>
+                    <button style={myStyle3} onClick={getConsoleOrder()}>Оформити за {totalPrice} ₴</button>
                 </div>
             </div>
         </>
